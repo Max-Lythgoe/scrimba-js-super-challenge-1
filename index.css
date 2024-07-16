@@ -49,3 +49,12 @@ p {
     font-size: 13px;
     margin: 5px 0 5px 0;
 }
+
+.placeholder, .placeholder h2, .placeholder h3, .placeholder p {
+    font-family: 'Redacted';
+    color: #000;
+}
+
+.placeholder {
+    opacity: .5;
+}

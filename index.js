@@ -32,6 +32,14 @@ This is the HTML template 👇. Replace everything in UPPERCASE with property da
 
 */
 
+function numCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function sumNums(x) {
+    return x.reduce(function(total, num){return total + Math.round(num)}, 0);
+}
+
 if (Array.isArray(propArray)) {
     console.log(`Array is ${Array.isArray(propArray)}`);
     
@@ -42,9 +50,9 @@ if (Array.isArray(propArray)) {
     <img src="/images/${image}">
     <div class="card-right">
         <h2>${propertyLocation}</h2>
-        <h3>${priceGBP}</h3>
+        <h3>$${numCommas(priceGBP)}</h3>
         <p>${comment}</p>
-        <h3>${roomsM2}</h3>
+        <h3>${sumNums(roomsM2)} Ft.</h3>
     </div>
 </section> 
     `
@@ -57,13 +65,13 @@ if (Array.isArray(propArray)) {
         console.log(`Array is ${Array.isArray(propArray)}`);
         
         return (`
-    <section class="card">
+    <section class="card placeholder">
     <img src="/images/${placeholderPropertyObj.image}">
     <div class="card-right">
         <h2>${placeholderPropertyObj.propertyLocation}</h2>
-        <h3>${placeholderPropertyObj.priceGBP}</h3>
+        <h3>$${numCommas(placeholderPropertyObj.priceGBP)}</h3>
         <p>${placeholderPropertyObj.comment}</p>
-        <h3>${placeholderPropertyObj.roomsM2}</h3>
+        <h3>${sumNums(placeholderPropertyObj.roomsM2)}</h3>
     </div>
 </section> 
     `)
@@ -72,6 +80,8 @@ if (Array.isArray(propArray)) {
 
 
 }
+
+const fakeArray = 27;
 
 /***** Modify 👇 by adding an argument to the function call ONLY. *****/
 document.getElementById('container').innerHTML = getPropertyHtml(propertyForSaleArr)
